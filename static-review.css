@@ -1,0 +1,397 @@
+/* v18 static review. */
+main {
+  --review-face: linear-gradient(160deg, #18191b, #141517 78%);
+  --review-rim: #ffffff38;
+  --review-shadow: 0 14px 32px #0003;
+  --review-radius: 20px;
+  --review-inset: clamp(18px, 2.15vw, 32px);
+}
+
+:root {
+  --header-height: 68px;
+  --header-height-compact: 62px;
+}
+
+.header-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  gap: var(--space-3);
+}
+
+.wordmark {
+  justify-self: start;
+}
+
+.header-caption {
+  display: none;
+}
+
+.site-header nav {
+  gap: 0;
+  margin: 0;
+  padding: 2px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+}
+
+.site-header nav a {
+  justify-content: center;
+  padding-inline: clamp(12px, 1.35vw, 24px);
+  border-radius: var(--radius-pill);
+}
+
+.site-header nav a:is(:hover, :focus-visible) {
+  background: var(--surface-2);
+}
+
+.header-contact {
+  justify-self: end;
+  gap: var(--space-2);
+  padding-inline: var(--space-4);
+  color: var(--fg-2);
+  background: var(--surface-2);
+}
+
+.header-contact:hover {
+  color: var(--fg);
+}
+
+.header-contact > span {
+  width: auto;
+  height: auto;
+  background: transparent;
+  color: var(--fg);
+}
+
+.profile-info > a,
+.button,
+.project-open,
+.video-tabs button,
+.close-detail {
+  border-radius: var(--radius-sm);
+}
+
+.hero {
+  min-height: 0;
+  padding-block: var(--space-4) 0;
+  background: transparent;
+}
+
+.hero-cover {
+  /* The inner 1401 × 970 area excludes the supplied image's drawn frame. */
+  --cover-width: 1401;
+  --cover-height: 970;
+  position: relative;
+  grid-area: 1 / 1 / 2 / -1;
+  justify-self: center;
+  width: min(100%, calc(max(320px, 100svh - var(--header-size) - var(--space-4)) * var(--cover-width) / var(--cover-height)));
+  aspect-ratio: var(--cover-width) / var(--cover-height);
+  margin: 0;
+  overflow: hidden;
+  mask-image:
+    linear-gradient(to right, transparent, black 4.4% 95.6%, transparent),
+    linear-gradient(to bottom, transparent, black 2% 90%, transparent);
+  mask-composite: intersect;
+}
+
+.hero-cover img {
+  position: absolute;
+  inset-inline-start: calc(-100% * 50 / var(--cover-width));
+  inset-block-start: calc(-100% * 35 / var(--cover-height));
+  display: block;
+  width: calc(100% * 1501 / var(--cover-width));
+  max-width: none;
+  height: auto;
+}
+
+.chapter-divider {
+  --divider-direction: to right;
+  border-top: 0;
+}
+
+.chapter-divider:nth-child(even of .chapter-divider) {
+  --divider-direction: to left;
+}
+
+.chapter-divider::before {
+  inset: 0 0 auto;
+  width: auto;
+  background: linear-gradient(var(--divider-direction),
+    color-mix(in srgb, var(--brand) 52%, transparent), #ffffff33 13%, #ffffff18 48%, transparent 94%);
+  opacity: 1;
+}
+
+.timeline-group:has(.timeline-entry.is-current) .timeline-year,
+.timeline-entry.is-current .timeline-date {
+  color: var(--brand);
+}
+
+#S03A .chapter-heading,
+#S05 .chapter-heading {
+  align-items: end;
+  min-height: 0;
+  margin-bottom: clamp(28px, 3.5vw, 52px);
+  padding-top: 26px;
+}
+
+#S03A .chapter-number,
+#S05 .chapter-number {
+  font-size: clamp(108px, 11vw, 164px);
+  opacity: .13;
+}
+
+#S03A .chapter-chinese,
+#S05 .chapter-chinese {
+  margin-top: 9px;
+  line-height: 1.23;
+}
+
+.ability-grid {
+  grid-template-columns: minmax(0, 1.23fr) minmax(0, 1fr);
+  gap: clamp(12px, 1.15vw, 18px);
+}
+
+:is(.ability-card, .timeline-card, .video-shell, .project-case) {
+  position: relative;
+  border: 0;
+  border-radius: var(--review-radius);
+  background: var(--review-face);
+  box-shadow: var(--review-shadow);
+}
+
+:is(.ability-card, .timeline-card, .video-shell, .project-case, .workflow-preview, .project-open)::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  border: 1px solid var(--review-rim);
+  border-radius: inherit;
+  mask-image: linear-gradient(180deg, #000, #0009 10%, #0003 26%, transparent 43%);
+  content: "";
+  pointer-events: none;
+}
+
+.ability-card {
+  grid-template-columns: minmax(0, 1fr) minmax(116px, 34%);
+  align-items: center;
+  gap: clamp(14px, 1.65vw, 26px);
+  padding: clamp(16px, 1.8vw, 26px);
+}
+
+.ability-card:first-child {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.ability-card:first-child .ability-copy {
+  padding: clamp(22px, 2.6vw, 38px);
+}
+
+.ability-card:first-child .ability-description {
+  max-width: 50ch;
+}
+
+.ability-card:first-child .ability-art {
+  order: -1;
+  min-height: clamp(210px, 22vw, 340px);
+  border: 0;
+  border-radius: 0;
+  background:
+    radial-gradient(ellipse at 52% 41%, transparent 16%, #0c0d10 77%),
+    radial-gradient(circle, #ffffff23 1px, transparent 1.5px) 0 0 / 17px 17px,
+    radial-gradient(ellipse at 50% 16%, #232528, #0d0e11 78%);
+}
+
+.ability-card:not(:first-child) .ability-art {
+  align-self: center;
+  aspect-ratio: 3 / 2;
+  min-height: 0;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: #0b0c0e;
+}
+
+.ability-card:not(:first-child) .ability-art img {
+  object-fit: cover;
+}
+
+.ability-card[data-asset="A-ABILITY-03"] .ability-art img {
+  object-position: center bottom;
+}
+
+.ability-card[data-asset="A-ABILITY-04"] .ability-art img {
+  object-position: left center;
+}
+
+.ability-description {
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.workflow-preview {
+  --review-rim: #ffffff2b;
+  position: relative;
+  width: min(86%, 530px);
+  border: 0;
+  background: linear-gradient(165deg, #191a1e, #131417);
+  box-shadow: 0 12px 28px #0005;
+}
+
+.workflow-toolbar {
+  border-bottom: 0;
+}
+
+.workflow-node {
+  border: 0;
+  background: #202125;
+}
+
+.workflow-node-active {
+  background: color-mix(in srgb, #202125 94%, var(--brand));
+}
+
+.video-placeholder {
+  border: 0;
+  background: radial-gradient(ellipse at 50% 0%, #212227, #1a1b1f 72%);
+}
+
+.project-divider {
+  padding: 12px var(--review-inset);
+  border-bottom: 0;
+  background: linear-gradient(90deg, #ffffff16, transparent 82%) left bottom / 100% 1px no-repeat;
+}
+
+.project-divider::before {
+  content: none;
+}
+
+.project-divider strong {
+  color: var(--fg-2);
+  font-size: clamp(23px, 2.2vw, 32px);
+}
+
+.project-card {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(20px, 3.1vw, 54px);
+  padding: var(--review-inset);
+}
+
+.project-cover {
+  border-radius: 12px;
+}
+
+.project-cover:not(.collection-cover) {
+  background: #0d0e10;
+}
+
+.project-info {
+  align-self: stretch;
+  justify-content: space-between;
+  gap: clamp(22px, 2.35vw, 40px);
+  padding-block: clamp(12px, 1.35vw, 24px);
+  padding-inline: 0 clamp(2px, .8vw, 14px);
+}
+
+.project-info h3 {
+  font-size: clamp(27px, 2.35vw, 40px);
+  text-wrap: balance;
+}
+
+.project-description {
+  max-width: 38ch;
+  margin-top: var(--space-4);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.project-open {
+  --review-rim: #ffffff30;
+  position: relative;
+  margin-top: 4px;
+  border: 0;
+  background: linear-gradient(180deg, #2a2b2f, #202125);
+  box-shadow: 0 5px 12px #0005;
+}
+
+.project-open:hover {
+  background: linear-gradient(180deg, #35363a, #25262a);
+}
+
+.project-open:active {
+  box-shadow: 0 2px 6px #0005;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding-block: var(--space-3) 0;
+  }
+
+  .hero-cover {
+    width: 100%;
+  }
+
+  .ability-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-info {
+    gap: var(--space-6);
+    padding: 0 var(--space-1) var(--space-1);
+  }
+}
+
+@media (max-width: 640px) {
+  .header-inner {
+    gap: clamp(4px, 1.25vw, 8px);
+  }
+
+  .site-header nav {
+    justify-self: center;
+  }
+
+  .site-header nav a {
+    min-height: 40px;
+    padding-inline: clamp(3px, 1.1vw, 8px);
+  }
+
+  .header-contact {
+    padding-inline: var(--space-3);
+  }
+
+  #S03A .chapter-number,
+  #S05 .chapter-number {
+    font-size: 88px;
+  }
+
+  #S05 .chapter-chinese br {
+    display: initial;
+  }
+
+  .ability-card:not(:first-child) {
+    grid-template-columns: minmax(0, 1fr) minmax(96px, 34%);
+    gap: 12px;
+  }
+
+  .ability-card:first-child .ability-art {
+    min-height: 176px;
+  }
+
+  .workflow-preview {
+    width: 94%;
+  }
+
+  .ability-description {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 359px) {
+  .header-inner {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+  }
+}

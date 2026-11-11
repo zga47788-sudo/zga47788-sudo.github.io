@@ -1,0 +1,122 @@
+/* Existing scene dimensions and cover positions used by the corner calibration. */
+.hero {
+  position: relative;
+  isolation: isolate;
+  width: var(--page-width);
+  min-height: clamp(630px, min(56vw, calc(100svh - var(--header-size))), 1040px);
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.hero-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.hero-scene-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--scene-x) var(--scene-y);
+  filter: grayscale(1) brightness(.79) contrast(1.36);
+}
+
+.hero-scene::after {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, var(--bg), transparent 11%),
+    linear-gradient(90deg, transparent 95%, var(--bg)),
+    linear-gradient(90deg, var(--bg) 4%, var(--bg) 21%, transparent 55%);
+  content: "";
+  pointer-events: none;
+}
+
+/* The authored 360 × 780 screen keeps the same corner calibration. */
+.hero-phone-ui {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 360px;
+  height: 780px;
+  padding: 142px 34px 18px;
+  overflow: hidden;
+  transform-origin: 0 0;
+  border-radius: var(--radius-phone);
+  pointer-events: none;
+  visibility: hidden;
+  background: transparent;
+  color: var(--phone-fg);
+  font-family: var(--font-body);
+  line-height: 1.3;
+}
+
+.hero-phone-ui[data-aligned="true"] {
+  visibility: visible;
+}
+
+.phone-ui-brand {
+  color: var(--phone-fg);
+  font-size: 15px;
+  letter-spacing: .14em;
+}
+
+.phone-ui-title {
+  margin-top: var(--space-6);
+  font-family: var(--font-display);
+  font-size: 78px;
+  font-weight: 800;
+  line-height: .88;
+  letter-spacing: -.012em;
+}
+
+.phone-ui-title > span {
+  color: var(--brand);
+}
+
+.phone-ui-title::after {
+  display: block;
+  width: 52px;
+  height: 2px;
+  margin-top: var(--space-6);
+  background: var(--phone-fg);
+  opacity: .6;
+  content: "";
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 0;
+    --scene-x: var(--scene-x-tablet);
+  }
+
+  .hero-scene {
+    position: relative;
+    inset: auto;
+    z-index: 0;
+    width: auto;
+    height: 450px;
+  }
+
+  .hero-scene::after {
+    background: linear-gradient(var(--bg), transparent 14% 82%, var(--bg));
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    --scene-x: var(--scene-x-mobile);
+  }
+
+  .hero-scene {
+    height: clamp(240px, 78vw, 420px);
+  }
+}

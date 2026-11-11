@@ -1,0 +1,134 @@
+/* The white heading overlaps a subdued brand-yellow chapter number. */
+.chapter-heading {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-8);
+  min-height: 224px;
+  margin-bottom: var(--space-10);
+  padding: var(--space-7) 0 var(--space-3) clamp(62px, 6.2vw, 90px);
+}
+
+.chapter-number {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  color: var(--brand);
+  opacity: .2;
+  font-family: var(--font-display);
+  font-size: var(--chapter-number-size);
+  font-style: normal;
+  font-weight: 800;
+  font-variant-numeric: lining-nums;
+  line-height: .94;
+  letter-spacing: -.055em;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+}
+
+.chapter-title-group {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+}
+
+.chapter-english {
+  position: relative;
+  z-index: 1;
+  color: var(--fg-2);
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  font-style: normal;
+  line-height: 1.7;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.chapter-english > span {
+  display: inline;
+}
+
+.chapter-chinese {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  margin-top: var(--space-5);
+  color: var(--fg);
+  font-family: var(--font-chinese);
+  font-size: var(--chapter-title-size);
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-wrap: balance;
+}
+
+.chapter-chinese .muted {
+  color: inherit;
+}
+
+.chapter-description {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  align-self: flex-end;
+  max-width: 290px;
+  margin: 0;
+  padding-bottom: var(--space-1);
+  color: var(--fg-2);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+@media (max-width: 1100px) {
+  .chapter-heading {
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .chapter-description {
+    font-size: 12px;
+  }
+}
+
+.keep-word {
+  white-space: nowrap;
+}
+
+/* Start the mobile title within the smaller watermark. */
+@media (max-width: 640px) {
+  .chapter-heading {
+    display: block;
+    min-height: 0;
+    margin-bottom: var(--space-8);
+    padding: var(--space-7) 0 0 var(--space-5);
+  }
+
+  .chapter-number {
+    top: 0;
+    font-size: var(--chapter-number-mobile);
+    line-height: 1;
+  }
+
+  .chapter-title-group {
+    width: 100%;
+  }
+
+  .chapter-chinese {
+    margin-top: var(--space-4);
+  }
+
+  .chapter-chinese br {
+    display: none;
+  }
+
+  .chapter-description {
+    max-width: none;
+    margin-top: var(--space-5);
+    padding: 0;
+  }
+}

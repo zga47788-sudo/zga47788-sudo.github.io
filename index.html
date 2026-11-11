@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0a0b0d">
+  <meta name="description" content="赵世博的个人作品集：面向跨境电商的 AI 视频创作、自动化制作与商业视觉设计。">
+  <title>赵世博 SHIBO ZHAO — AI 视频与自动化制作</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/noto-sans-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/barlow-condensed-extrabold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="hero.css">
+  <link rel="stylesheet" href="chapter-headings.css">
+  <link rel="stylesheet" href="hero-reference.css">
+  <link rel="stylesheet" href="motion.css" id="motion-styles">
+  <link rel="stylesheet" href="static-review.css" id="static-review-styles" media="not all">
+  <link rel="stylesheet" href="red-review.css" id="red-review-styles" media="not all">
+  <link rel="stylesheet" href="red-motion.css" id="red-motion-styles" media="not all">
+  <script>
+    const version = new URLSearchParams(location.search).get('v') || 'red-motion';
+    const redTheme = version === 'red-static' || version === 'red-motion';
+    if (version === '18-static' || version === 'red-static') {
+      document.documentElement.dataset.staticReview = '';
+    }
+    if (version === '18-static' || redTheme) {
+      document.getElementById('motion-styles').media = 'not all';
+      document.getElementById('static-review-styles').media = 'all';
+    }
+    if (redTheme) {
+      document.documentElement.dataset.redReview = '';
+      document.getElementById('red-review-styles').media = 'all';
+      document.querySelector('meta[name="theme-color"]').content = '#000000';
+    }
+    if (version === 'red-motion') {
+      document.documentElement.dataset.redMotion = '';
+      document.getElementById('red-motion-styles').media = 'all';
+    }
+  </script>
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+  <script src="motion.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="site-header">
+    <div class="header-inner container">
+      <a class="wordmark" href="#S01" aria-label="赵世博，返回首页">SZ<span class="wordmark-dot">.</span></a>
+      <span class="header-caption">SHIBO ZHAO <span>/ PORTFOLIO</span></span>
+      <nav aria-label="主导航">
+        <a href="#S02">作品</a>
+        <a href="#S03">经历</a>
+        <a href="#S03A">能力</a>
+        <a href="#S04">视频</a>
+        <a href="#S05">平面</a>
+      </nav>
+      <a class="header-contact" href="mailto:1059146171@qq.com">联系我 <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="S01" aria-labelledby="hero-title" data-section="S01">
+      <div class="hero-identity">
+        <p class="eyebrow">AI CREATIVE STUDIO</p>
+        <h1 id="hero-title"><span class="hero-display-name"><span>SHIBO</span> <span>ZHAO</span></span><span class="chinese-name">赵世博 <span>/ AI 视频与自动化制作</span></span></h1>
+      </div>
+      <figure class="hero-scene" data-asset="A-HERO-SCENE">
+        <img class="hero-scene-image" src="assets/hero-scene-v02.webp" width="1672" height="941" alt="石墨色手机立于玄武岩底座，右上方柔光照亮金属边缘与石面" fetchpriority="high">
+        <div class="hero-phone-ui" data-asset="A-HERO-UI" aria-hidden="true">
+          <p class="phone-ui-brand">CREATIVE WORKFLOW</p>
+          <div class="phone-ui-title">IDEA TO<br><span>VIDEO.</span></div>
+        </div>
+        <figcaption class="sr-only">为本作品集制作的静态概念场景。</figcaption>
+      </figure>
+      <template id="static-hero-cover">
+        <figure class="hero-cover">
+          <img src="assets/portfolio-cover-dark.png" width="1501" height="1047" alt="黑金色 Mindly 设计图，半透明卡片环绕正在像素化的人物" fetchpriority="high">
+        </figure>
+      </template>
+      <template id="red-hero-cover">
+        <div class="red-hero-word" lang="en" aria-hidden="true">CREATE IN MOTION</div>
+        <figure class="red-hero-art">
+          <div role="img" aria-label="红色竖卡中的玻璃侧脸，八张品牌玻璃卡沿光轨从人物前后环绕">
+            <svg class="red-hero-orbit red-hero-orbit-back" viewBox="0 0 1120 725" aria-hidden="true">
+              <path d="M118 483C103 357 316 236 575 205S1000 253 1004 382"/>
+            </svg>
+            <svg class="red-hero-orbit red-hero-orbit-front" viewBox="0 0 1120 725" aria-hidden="true">
+              <path class="red-orbit-glass" d="M118 483C129 559 367 592 598 577S994 469 1004 382C1002 494 808 555 601 597 368 613 120 580 118 483Z"/>
+              <path d="M118 483C129 559 367 592 598 577S994 469 1004 382"/>
+            </svg>
+            <div class="red-hero-card" data-orbit-card="tiktok" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.1 1.8 3.8 4 4.1v3.3a8 8 0 0 1-4-1.4v6.4a5.6 5.6 0 1 1-5.6-5.6l1 .1v3.3a2.4 2.4 0 1 0 1.4 2.2V3z"/></svg>
+              <span>TikTok</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="codex" aria-hidden="true">
+              <img src="assets/tools/codex.svg" alt="">
+              <span>Codex</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="jimeng" aria-hidden="true">
+              <img src="assets/tools/jimeng.svg" alt="">
+              <span>即梦</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="photoshop" aria-hidden="true">
+              <img src="assets/tools/photoshop.svg" alt="">
+              <span>Photoshop</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="minimax" aria-hidden="true">
+              <img src="assets/tools/minimax.svg" alt="">
+              <span>MiniMax</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="dsh" aria-hidden="true">
+              <img src="assets/tools/dsh.svg" alt="">
+              <span>DSH</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="instagram" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="red-hero-icon-line"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+              <span>Instagram</span>
+            </div>
+            <div class="red-hero-card" data-orbit-card="youtube" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="4" class="red-hero-youtube-base"/><path d="m10 8.8 6 3.2-6 3.2z"/></svg>
+              <span>YouTube</span>
+            </div>
+            <img class="red-hero-panel" src="assets/red-review/hero-red-panel.png" width="1024" height="1536" alt="" fetchpriority="high">
+          </div>
+          <figcaption class="red-hero-caption" lang="en">From visual concept to final cut</figcaption>
+        </figure>
+        <div class="red-hero-identity">
+          <h1 id="hero-title"><span lang="en">SHIBO ZHAO</span><span class="red-hero-name-zh">赵世博</span></h1>
+          <p>AI 视频创作与自动化</p>
+        </div>
+      </template>
+      <template id="red-manifesto">
+        <section class="red-manifesto" aria-label="创作理念" lang="en">
+          <blockquote>
+            <p><span>Every <em>frame</em></span><span>has a job</span><span>to do.</span></p>
+            <svg class="red-manifesto-note" viewBox="0 0 400 134" role="img" aria-label="Shibo Zhao">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke-width="5.1" d="M117 24C122 10 97 9 78 19 58 29 41 44 48 54c7 10 44-3 53 7 13 15-46 44-79 46-13 1-14-4-5-9m104-5c14-19 31-47 48-72 10-15 15-13 11-3-6 14-25 36-44 51 14-12 23-16 25-9 1 4-10 24-4 25 5 1 13-6 20-14 6-6 12-14 13-11 1 4-11 21-5 22 5 1 16-10 23-23 8-13 13-28 20-32 6-4 2 6-3 14-5 7-16 20-20 29-7 13 6 10 14 2 6-6 7-14 3-15-4-1-8 3-11 6 12-4 17-7 23-3 5 3 3 14-4 17-9 4-7-10 2-17 5-4 11-4 15-4"/>
+                <path stroke-width="5.7" d="M249 42c20-10 70-21 94-22 10 0 3 6-3 11-14 11-40 27-60 47-12 12-9 14 0 13 14-3 40-13 64-17m-37 12c13-16 28-42 38-56 7-9 8-8 5-2-7 12-18 22-28 31 10-9 20-13 21-7 1 5-10 20-5 21 4 1 13-8 18-15 8-9 13-12 13-8-1 5-12 15-14 15-4 2-5-5-1-11 5-6 12-8 16-5-2 5-9 15-4 15 4 0 11-9 15-13 6-6 11-6 10-1-1 6-10 13-13 10-4-4 3-12 10-14"/>
+                <path stroke-width="4" d="M188 49l4-5M49 120c67-16 160-26 239-28 40-1 72 0 97 2"/>
+              </g>
+            </svg>
+          </blockquote>
+        </section>
+        <div class="chapter-divider editorial-divider container" aria-hidden="true"></div>
+      </template>
+      <div class="hero-note">
+        <h2>从参考分析，到剪辑交付。</h2>
+        <p>面向跨境电商的 AI 视频创作与自动化制作。</p>
+      </div>
+      <div class="hero-actions">
+        <a class="hero-watch" href="#S04">视频展示 <span lang="en">WATCH REEL</span><span aria-hidden="true">↗</span></a>
+        <a class="scroll-link" href="#S02"><span>向下探索</span><span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="hero-focus" lang="en">
+        <p class="eyebrow">/ WHAT I DO</p>
+        <ul>
+          <li><span aria-hidden="true">01</span>AI VIDEO CREATION</li>
+          <li><span aria-hidden="true">02</span>CREATIVE AUTOMATION</li>
+          <li><span aria-hidden="true">03</span>E-COMMERCE DESIGN</li>
+        </ul>
+      </div>
+      <p class="hero-role" lang="en" aria-hidden="true">CREATOR</p>
+      <script>
+        if (document.documentElement.matches('[data-static-review], [data-red-review]')) {
+          const hero = document.getElementById('S01');
+          if (document.documentElement.hasAttribute('data-red-review')) {
+            const cover = document.getElementById('red-hero-cover').content;
+            const manifesto = document.getElementById('red-manifesto').content;
+            hero.replaceChildren(cover);
+            hero.after(manifesto);
+          } else {
+            const cover = document.getElementById('static-hero-cover');
+            const title = document.getElementById('hero-title');
+            title.className = 'sr-only';
+            title.textContent = '赵世博个人作品集';
+            hero.replaceChildren(title, cover.content);
+          }
+        }
+      </script>
+    </section>
+
+    <section class="selected-work section-space" id="S02" aria-labelledby="selected-title" data-section="S02">
+      <div class="section-heading chapter-heading container">
+        <span class="chapter-number" aria-hidden="true">01</span>
+        <div class="chapter-title-group"><p class="chapter-english">SELECTED WORKS</p><h2 class="chapter-chinese" id="selected-title">不同项目，<br>同样<wbr><span class="keep-word">重视</span>画面表达。</h2></div>
+        <p class="section-intro chapter-description">商业视觉、运营物料与电商内容。</p>
+      </div>
+      <div class="wall-viewport container" aria-hidden="true">
+        <div class="project-wall" id="project-wall"></div>
+      </div>
+    </section>
+
+    <div class="chapter-divider editorial-divider container" aria-hidden="true">
+      <strong>02</strong><span class="divider-title">职业经历</span><span class="divider-subtitle" lang="en">ABOUT / EXPERIENCE</span>
+    </div>
+    <section class="career section-space container" id="S03" aria-labelledby="career-title" data-section="S03">
+      <div class="career-heading chapter-heading"><span class="chapter-number" aria-hidden="true">02</span><div class="chapter-title-group"><p class="chapter-english">ABOUT / EXPERIENCE</p><h2 class="chapter-chinese" id="career-title">商业视觉<br><span class="keep-word">与 AI 制作</span></h2></div></div>
+      <div class="career-grid">
+        <div class="profile-frame">
+          <aside class="profile-card" aria-label="赵世博的个人照片卡片">
+            <div class="portrait-photo" data-asset="A-PORTRAIT">
+              <img width="720" height="960" alt="赵世博证件照" loading="lazy" decoding="async">
+              <span class="portrait-name">赵世博</span>
+            </div>
+            <div class="profile-info"><div><p>AI 视频创作 / 自动化制作</p><span>跨境电商 · 视觉内容</span></div><a href="mailto:1059146171@qq.com" aria-label="发邮件联系赵世博">↗</a></div>
+          </aside>
+        </div>
+        <div class="career-content"><p class="career-intro">我有品牌与电商视觉设计经历，近年将重心转向 AI 图像、视频制作与工作流应用。围绕产品内容，完成脚本、素材组织、生成与剪辑，并整理可复用的制作方法。</p><ol class="timeline" id="timeline"></ol><p class="education"><span>EDUCATION</span>陕西学前师范学院 / 本科 · 商业绘画 / 2020—2024</p><div class="career-links"><a class="button button-light" href="assets/zhao-shibo-resume.pdf" target="_blank" rel="noopener">查看个人简历 <span aria-hidden="true">↗</span></a></div></div>
+      </div>
+    </section>
+
+    <div class="chapter-divider editorial-divider container" aria-hidden="true">
+      <strong>03</strong><span class="divider-title">能力与方法</span><span class="divider-subtitle" lang="en">WHAT I DO</span>
+    </div>
+    <section class="abilities section-space container" id="S03A" aria-labelledby="abilities-title" data-section="S03A">
+      <div class="ability-heading chapter-heading"><span class="chapter-number" aria-hidden="true">03</span><div class="chapter-title-group"><p class="chapter-english">WHAT I DO</p><h2 class="chapter-chinese keep-word" id="abilities-title">我能做什么</h2></div><p class="chapter-description">连接产品、创意与制作方法，<br>让每一步都有清楚的落点。</p></div>
+      <div class="ability-grid" id="ability-grid"></div>
+    </section>
+
+    <div class="chapter-divider editorial-divider container" aria-hidden="true">
+      <strong>04</strong><span class="divider-title">视频制作</span><span class="divider-subtitle" lang="en">FROM REFERENCE TO DELIVERY</span>
+    </div>
+    <section class="video-section section-space container" id="S04" aria-labelledby="video-title" data-section="S04">
+      <div class="section-heading chapter-heading chapter-heading-long"><span class="chapter-number" aria-hidden="true">04</span><div class="chapter-title-group"><p class="chapter-english"><span>FROM REFERENCE</span> <span>TO DELIVERY</span></p><h2 class="chapter-chinese" id="video-title">从参考，到成片。</h2></div></div>
+      <div class="video-shell"><div class="video-tabs" role="tablist" aria-label="视频展示方向"><button id="tab-V01" role="tab" aria-selected="true" aria-controls="video-panel" data-video="V01"><span>01</span> 批量制作展示</button><button id="tab-V02" role="tab" aria-selected="false" aria-controls="video-panel" data-video="V02" tabindex="-1"><span>02</span> 复刻成功案例</button><button id="tab-V03" role="tab" aria-selected="false" aria-controls="video-panel" data-video="V03" tabindex="-1"><span>03</span> 我的制作流程</button></div><div class="video-panel" id="video-panel" role="tabpanel" aria-labelledby="tab-V01" tabindex="0"><div class="video-placeholder" data-asset="V01 / P-V01"><div class="video-frame-meta"><span id="video-asset-id">V01 / P-V01</span><span>16:9 / VIDEO</span></div><div class="video-center"><span class="video-monogram" id="video-monogram" aria-hidden="true">01</span><span class="placeholder-cross" aria-hidden="true"></span><h3 id="video-placeholder-title">批量制作展示</h3></div><div class="video-frame-bottom" aria-hidden="true">＋</div></div></div><div class="video-caption"><p id="video-description" aria-live="polite">从一个参考，展开适合自己产品的不同版本。</p></div></div>
+      <template id="red-video-fan">
+        <div class="red-video-fan">
+          <div id="video-panel" role="tabpanel" aria-labelledby="tab-V01" aria-describedby="video-description" tabindex="0">
+            <div class="red-video-headline"><h3 id="video-placeholder-title" aria-live="polite"></h3></div>
+            <div class="red-fan-deck" aria-label="视频封面试排"></div>
+            <p id="video-description"></p>
+          </div>
+        </div>
+      </template>
+    </section>
+
+    <div class="chapter-divider editorial-divider container" aria-hidden="true">
+      <strong>05</strong><span class="divider-title">平面项目</span><span class="divider-subtitle" lang="en">DESIGN PROJECTS</span>
+    </div>
+    <section class="graphic-projects section-space container" id="S05" aria-labelledby="graphic-title" data-section="S05">
+      <div class="section-heading chapter-heading"><span class="chapter-number" aria-hidden="true">05</span><div class="chapter-title-group"><p class="chapter-english">PROJECTS</p><h2 class="chapter-chinese" id="graphic-title"><span class="chapter-phrase">画面之外，</span><br><span class="chapter-phrase">也<span class="keep-word">重视</span><span class="keep-word">信息表达。</span></span></h2></div><p class="section-intro chapter-description">平面项目<br>品牌、运营与电商视觉。</p></div>
+      <div class="project-list" id="project-list"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer container" aria-labelledby="toolkit-title">
+    <h2 class="toolkit-heading" id="toolkit-title">我常用的工具</h2>
+    <div class="toolkit-list">
+      <ul class="toolkit-track" role="list">
+        <li><img src="assets/tools/hermes.svg" alt="" width="28" height="28" loading="lazy"><span>Hermes Agent</span></li>
+        <li><img src="assets/tools/codex.svg" alt="" width="28" height="28" loading="lazy"><span>Codex</span></li>
+        <li><img src="assets/tools/dsh.svg" alt="" width="28" height="28" loading="lazy"><span>DSH</span></li>
+        <li><img src="assets/tools/jimeng.svg" alt="" width="28" height="28" loading="lazy"><span>即梦</span></li>
+        <li><img class="toolkit-tonal" src="assets/tools/runninghub.ico" alt="" width="28" height="28" loading="lazy"><span>RunningHub</span></li>
+        <li><img src="assets/tools/minimax.svg" alt="" width="28" height="28" loading="lazy"><span>MiniMax</span></li>
+      </ul>
+      <ul class="toolkit-track" role="list">
+        <li><img src="assets/tools/comfyui.svg" alt="" width="28" height="28" loading="lazy"><span>ComfyUI</span></li>
+        <li><img class="toolkit-tonal" src="assets/tools/photoshop.svg" alt="" width="28" height="28" loading="lazy"><span>Photoshop</span></li>
+        <li><img class="toolkit-tonal" src="assets/tools/illustrator.svg" alt="" width="28" height="28" loading="lazy"><span>Illustrator</span></li>
+        <li><img src="assets/tools/capcut.svg" alt="" width="28" height="28" loading="lazy"><span>CapCut</span></li>
+        <li><img src="assets/tools/midjourney.svg" alt="" width="28" height="28" loading="lazy"><span>Midjourney</span></li>
+        <li><img class="toolkit-tonal" src="assets/tools/higgsfield.png" alt="" width="28" height="28" loading="lazy"><span>Higgsfield</span></li>
+      </ul>
+    </div>
+    <div class="footer-meta"><span>© 2026 赵世博</span><a href="#S01">返回顶部 ↑</a></div>
+  </footer>
+
+  <dialog id="project-detail" aria-labelledby="detail-title" class="detail-sheet">
+    <div class="detail-toolbar">
+      <button id="close-detail" class="close-detail" type="button" aria-label="关闭项目详情">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="m6 6 12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="detail-content">
+      <p class="detail-meta" id="detail-category"></p>
+      <h2 id="detail-title" tabindex="-1"></h2>
+      <p class="detail-lead" id="detail-lead"></p>
+      <div class="detail-gallery" id="detail-gallery"></div>
+    </div>
+  </dialog>
+  <noscript><p class="noscript-note">请启用 JavaScript，以查看经历、能力及作品，并使用视频切换与详情面板。</p></noscript>
+</body>
+</html>

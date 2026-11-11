@@ -1,0 +1,256 @@
+/* Identity, statement and actions share the left edge of the hero grid. */
+.hero {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  align-content: center;
+  gap: var(--space-6) clamp(12px, 1.5vw, 28px);
+  padding-block: clamp(32px, 4vw, 64px);
+}
+
+.hero-identity,
+.hero-note,
+.hero-actions {
+  z-index: 1;
+  grid-column: 1 / span 5;
+  min-width: 0;
+}
+
+.hero-identity > .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  color: var(--fg-2);
+  font-size: clamp(14px, 1vw, 18px);
+  font-weight: 600;
+  letter-spacing: .14em;
+}
+
+.hero-identity > .eyebrow::after {
+  width: 48px;
+  height: 1px;
+  background: var(--brand);
+  content: "";
+}
+
+.hero-display-name {
+  display: grid;
+  gap: var(--space-3);
+  font: 800 clamp(110px, 12.2vw, 220px)/.79 var(--font-display);
+  letter-spacing: -.025em;
+  white-space: nowrap;
+}
+
+.hero-display-name > span:last-child {
+  color: var(--fg-2);
+  font-size: .48em;
+  line-height: .88;
+}
+
+.chinese-name {
+  display: block;
+  margin-top: var(--space-6);
+  font-size: clamp(22px, 1.6vw, 29px);
+  font-weight: 800;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+
+.chinese-name > span {
+  margin-left: var(--space-2);
+  color: var(--fg-2);
+  font: 400 clamp(15px, 1.05vw, 18px)/1.6 var(--font-body);
+  letter-spacing: .01em;
+}
+
+.hero-note {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line);
+}
+
+.hero-note h2 {
+  font: 600 clamp(24px, 2.15vw, 38px)/1.4 var(--font-body);
+  letter-spacing: .01em;
+  text-wrap: balance;
+}
+
+.hero-note p {
+  margin-top: var(--space-2);
+  color: var(--fg-2);
+  font-size: clamp(15px, 1.1vw, 19px);
+  line-height: 1.7;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.hero-watch,
+.scroll-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  min-height: 46px;
+  font-size: 15px;
+  white-space: nowrap;
+}
+
+.hero-watch {
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--brand);
+  border-radius: var(--radius-pill);
+  background: var(--brand);
+  color: var(--portrait-ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.hero-watch > [lang="en"] {
+  font: 700 16px/1 var(--font-display);
+  letter-spacing: .08em;
+}
+
+.scroll-link {
+  color: var(--fg-2);
+}
+
+.scroll-link > span:last-child {
+  color: var(--fg);
+  font-size: 18px;
+}
+
+.hero-focus {
+  position: absolute;
+  top: 41%;
+  right: 0;
+  z-index: 1;
+  width: clamp(200px, 21vw, 360px);
+}
+
+.hero-focus .eyebrow {
+  margin-bottom: var(--space-3);
+  color: var(--fg);
+  font-size: 14px;
+  text-align: right;
+}
+
+.hero-focus ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.hero-focus li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-2);
+  padding-block: var(--space-2);
+  border-top: 1px solid var(--line);
+  color: var(--fg);
+  font: 700 clamp(17px, 1.6vw, 27px)/1.2 var(--font-display);
+  letter-spacing: .04em;
+  white-space: nowrap;
+}
+
+.hero-focus li > span {
+  color: var(--brand);
+  font: 500 13px/1 var(--font-body);
+}
+
+.hero-role {
+  position: absolute;
+  right: 0;
+  bottom: 10%;
+  color: transparent;
+  background: linear-gradient(180deg, #727272, #171719);
+  background-clip: text;
+  opacity: .58;
+  font: 800 clamp(70px, 9.5vw, 166px)/.82 var(--font-display);
+  letter-spacing: -.035em;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    gap: var(--space-6) 0;
+    padding-block: var(--space-8);
+  }
+
+  .hero-identity,
+  .hero-note,
+  .hero-actions,
+  .hero-focus,
+  .hero-scene {
+    grid-column: 1 / -1;
+  }
+
+  .hero-display-name {
+    display: flex;
+    align-items: baseline;
+    font-size: clamp(74px, 13vw, 132px);
+  }
+
+  .hero-display-name > span:last-child {
+    font-size: .64em;
+  }
+
+  .hero-note {
+    padding-top: 0;
+    border: 0;
+  }
+
+  .hero-focus {
+    position: static;
+    width: auto;
+  }
+
+  .hero-focus .eyebrow {
+    text-align: left;
+  }
+
+  .hero-focus ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .hero-focus li {
+    justify-content: flex-start;
+    padding: var(--space-2) var(--space-3);
+    border: 1px solid var(--line);
+    font-size: 15px;
+  }
+
+  .hero-role {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding-block: var(--space-6) var(--space-8);
+  }
+
+  .hero-display-name {
+    font-size: clamp(70px, 22vw, 124px);
+  }
+
+  .chinese-name {
+    font-size: 20px;
+  }
+
+  .hero-actions {
+    gap: var(--space-4);
+  }
+
+  .hero-watch,
+  .hero-watch > [lang="en"],
+  .scroll-link {
+    font-size: 14px;
+  }
+}
