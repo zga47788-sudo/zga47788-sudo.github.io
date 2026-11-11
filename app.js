@@ -245,13 +245,20 @@ function projectTitle(item) {
   return redReview ? item.title.replace(/ · |，/g, ' ') : item.title;
 }
 
-function projectCover(item, ratio = item.ratio) {
+function projectCover(item, ratio = item.ratio, loading = 'lazy') {
   const [width, height] = ratio === '9:16' ? [720, 1280] : [1440, 810];
-  return `<img src="assets/portfolio/project-${item.id}.webp" alt="${projectTitle(item)} · 项目主视觉" width="${width}" height="${height}" loading="lazy" decoding="async">`;
+  return projectImage(`project-${item.id}.webp`, `${projectTitle(item)} · 项目主视觉`, width, height, loading, loading === 'eager' ? 'high' : 'auto');
 }
 
-function projectMark(item) {
-  return item.logo ? `<img class="project-logo" src="${item.logo}" alt="${item.mark}" loading="lazy" decoding="async">` : item.mark;
+function projectImage(file, alt, width, height, loading, priority) {
+  return `<picture>
+    <source media="(max-width: 760px)" srcset="assets/portfolio/mobile/${file}">
+    <img src="assets/portfolio/${file}" alt="${alt}" width="${width}" height="${height}" loading="${loading}" fetchpriority="${priority}" decoding="async">
+  </picture>`;
+}
+
+function projectMark(item, loading = 'lazy') {
+  return item.logo ? `<img class="project-logo" src="${item.logo}" alt="${item.mark}" loading="${loading}" decoding="async">` : item.mark;
 }
 
 document.querySelector('#project-list').innerHTML = data.projects.map(item => `
@@ -416,8 +423,9 @@ function openProject(button) {
   const project = data.projects.find(item => item.id === button.dataset.project);
   returnFocus = button;
   returnScroll = window.scrollY;
+  // Request detail images on open, including while the sheet is sliding into view.
   document.querySelector('#detail-category').innerHTML = project.logo
-    ? `<span class="detail-brand">${projectMark(project)}</span><span>${project.label}</span>`
+    ? `<span class="detail-brand">${projectMark(project, 'eager')}</span><span>${project.label}</span>`
     : `<span>${project.label}</span>`;
   document.querySelector('#detail-title').textContent = projectTitle(project);
   document.querySelector('#detail-lead').textContent = project.description;
@@ -425,14 +433,14 @@ function openProject(button) {
   const coverRatio = project.detailCoverRatio ?? project.ratio;
   const detailCover = (staticReview || redReview) && project.id === '06'
     ? ''
-    : `<figure class="detail-figure detail-hero${coverRatio === '9:16' ? ' is-portrait' : ''}">${projectCover(project, coverRatio)}</figure>`;
+    : `<figure class="detail-figure detail-hero${coverRatio === '9:16' ? ' is-portrait' : ''}">${projectCover(project, coverRatio, 'eager')}</figure>`;
   gallery.dataset.asset = `A-PROJECT-DETAIL-${project.id}`;
   gallery.innerHTML = `
     ${detailCover}
     ${project.artwork.map(([title, width, height], index) => `
       <figure class="detail-figure${height > width * 3 ? ' is-long' : ''}">
         <figcaption>${title}</figcaption>
-        <img src="assets/portfolio/detail-${project.id}-${pad(index + 1)}.webp" alt="${title}" width="${width}" height="${height}" loading="lazy" decoding="async">
+        ${projectImage(`detail-${project.id}-${pad(index + 1)}.webp`, title, width, height, 'eager', index === 0 ? 'high' : 'low')}
       </figure>
     `).join('')}`;
   // Keep the live sticky stack at its current scroll position under the modal.

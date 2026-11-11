@@ -1124,7 +1124,7 @@ main .chapter-english {
   border-radius: 0;
 }
 
-.project-cover:not(.collection-cover) > img {
+.project-cover:not(.collection-cover) img {
   object-fit: cover;
 }
 
