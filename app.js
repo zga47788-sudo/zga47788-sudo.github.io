@@ -418,12 +418,19 @@ let returnFocus = null;
 let returnScroll = 0;
 let detailLocked = false;
 let detailClosing = false;
+const detailImages = new IntersectionObserver(entries => {
+  for (const entry of entries) {
+    if (!entry.isIntersecting) continue;
+    entry.target.loading = 'eager';
+    detailImages.unobserve(entry.target);
+  }
+}, { root: sheet, rootMargin: '240px 0px' });
 function openProject(button) {
   if (sheet.open) return;
   const project = data.projects.find(item => item.id === button.dataset.project);
   returnFocus = button;
   returnScroll = window.scrollY;
-  // Request detail images on open, including while the sheet is sliding into view.
+  // Request the first images while the sheet is still sliding into view.
   document.querySelector('#detail-category').innerHTML = project.logo
     ? `<span class="detail-brand">${projectMark(project, 'eager')}</span><span>${project.label}</span>`
     : `<span>${project.label}</span>`;
@@ -440,7 +447,7 @@ function openProject(button) {
     ${project.artwork.map(([title, width, height], index) => `
       <figure class="detail-figure${height > width * 3 ? ' is-long' : ''}">
         <figcaption>${title}</figcaption>
-        ${projectImage(`detail-${project.id}-${pad(index + 1)}.webp`, title, width, height, 'eager', index === 0 ? 'high' : 'low')}
+        ${projectImage(`detail-${project.id}-${pad(index + 1)}.webp`, title, width, height, index === 0 ? 'eager' : 'lazy', index === 0 && !detailCover ? 'high' : 'auto')}
       </figure>
     `).join('')}`;
   // Keep the live sticky stack at its current scroll position under the modal.
@@ -453,6 +460,7 @@ function openProject(button) {
   if (redMotionEffects?.detailScroller) redMotionEffects.detailScroller.scrollTop = 0;
   sheet.getBoundingClientRect();
   sheet.classList.add('is-presented');
+  gallery.querySelectorAll('img[loading="lazy"]').forEach(image => detailImages.observe(image));
   closeDetail.focus({ preventScroll: true });
 }
 document.querySelectorAll('[data-project]').forEach(button => button.addEventListener('click', () => openProject(button)));
@@ -460,6 +468,7 @@ function restoreDetailState() {
   if (sheet.open || !detailLocked) return;
   detailLocked = false;
   detailClosing = false;
+  detailImages.disconnect();
   sheet.classList.remove('is-presented');
   document.documentElement.classList.remove('detail-open', 'detail-gutter');
   window.scrollTo(0, returnScroll);
@@ -514,7 +523,7 @@ if (heroScene) {
 }
 
 if (redMotion) {
-  import('./red-motion.js').then(module => {
+  import('./red-motion.js?v=mobile-media').then(module => {
     redMotionEffects = module.initRedMotion(reducedMotion, data.videos);
   }).catch(error => console.warn('Black/red motion preview:', error));
 }

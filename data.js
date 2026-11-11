@@ -26,9 +26,9 @@ window.PORTFOLIO = {
     { id: '11', src: 'assets/portfolio/poster-11.webp', alt: '绿色顶呱刮海报' }
   ],
   videos: {
-    V01: { title: '批量制作展示', description: '从一个参考，展开适合自己产品的不同版本。', src: 'assets/videos/V01.mp4', poster: 'assets/videos/V01.webp', loop: true },
-    V02: { title: '复刻成功案例', description: '看实际成片，以及画面如何围绕产品重新组织。', src: 'assets/videos/V02.mp4', poster: 'assets/videos/V02.webp' },
-    V03: { title: '我的制作流程', description: '跟着一个真实任务，看需求怎样成为最终成片。', src: 'assets/videos/V03.mp4', poster: 'assets/videos/V03.webp' }
+    V01: { title: '批量制作展示', description: '从一个参考，展开适合自己产品的不同版本。', src: 'assets/videos/V01.mp4', mobileSrc: 'assets/videos/mobile/V01.mp4', poster: 'assets/videos/V01.webp', loop: true },
+    V02: { title: '复刻成功案例', description: '看实际成片，以及画面如何围绕产品重新组织。', src: 'assets/videos/V02.mp4', mobileSrc: 'assets/videos/mobile/V02.mp4', poster: 'assets/videos/V02.webp' },
+    V03: { title: '我的制作流程', description: '跟着一个真实任务，看需求怎样成为最终成片。', src: 'assets/videos/V03.mp4', mobileSrc: 'assets/videos/mobile/V03.mp4', poster: 'assets/videos/V03.webp' }
   },
   projects: [
     {

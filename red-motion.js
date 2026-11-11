@@ -696,6 +696,7 @@ function setupVideoPlayer(deck, videos, enabled) {
   surface.className = 'red-fan-player';
   surface.innerHTML = `
     <video playsinline preload="none" disablepictureinpicture disableremoteplayback hidden></video>
+    <p class="red-video-status" role="status" hidden></p>
     <div class="red-video-controls" role="group" aria-label="播放控制">
       <button class="red-video-toggle" type="button" aria-label="播放" title="播放">▶</button>
       <span class="red-video-clock">0:00 / 0:00</span>
@@ -708,6 +709,7 @@ function setupVideoPlayer(deck, videos, enabled) {
     </div>
   `;
   const player = $('video', surface);
+  const status = $('.red-video-status', surface);
   const toggle = $('.red-video-toggle', surface);
   const clock = $('.red-video-clock', surface);
   const progress = $('.red-video-progress', surface);
@@ -723,6 +725,12 @@ function setupVideoPlayer(deck, videos, enabled) {
   const dialogTitle = $('h3', dialog);
   document.body.append(dialog);
   let coveredCard, inView = false, loopWanted = false, soundMuted = false;
+  let playAttempt = 0;
+
+  function showStatus(message = '') {
+    status.textContent = message;
+    status.hidden = !message;
+  }
 
   function labelButton(button, label, symbol) {
     button.setAttribute('aria-label', label);
@@ -752,6 +760,15 @@ function setupVideoPlayer(deck, videos, enabled) {
     player.addEventListener(event, () => labelButton(toggle, player.paused ? '播放' : '暂停', player.paused ? '▶' : 'Ⅱ'));
   }
   player.addEventListener('volumechange', updateAudio);
+  player.addEventListener('waiting', () => {
+    if (!player.hidden && !player.paused) showStatus('视频加载中…');
+  });
+  player.addEventListener('playing', () => showStatus());
+  player.addEventListener('pause', () => { if (!player.error) showStatus(); });
+  player.addEventListener('error', () => {
+    loopWanted = false;
+    if (!player.hidden) showStatus('视频加载失败，请点击播放重试');
+  });
   progress.addEventListener('input', () => { player.currentTime = Number(progress.value); });
   sound.addEventListener('click', () => {
     soundMuted = !player.muted && player.volume > 0;
@@ -775,14 +792,22 @@ function setupVideoPlayer(deck, videos, enabled) {
   function playVideo() {
     if (surface.hidden) return;
     revealPlayer();
-    player.play().catch(() => {});
+    if (player.error) player.load();
+    if (player.readyState < 3) showStatus('视频加载中…');
+    const attempt = ++playAttempt;
+    player.play().catch(error => {
+      if (attempt !== playAttempt || error.name === 'AbortError') return;
+      loopWanted = false;
+      showStatus(error.name === 'NotAllowedError' ? '点击播放开始观看' : '视频加载失败，请点击播放重试');
+    });
   }
   function sync() {
-    if (document.hidden || (!inView && !dialog.open)) {
+    const moving = deck.matches('.red-fan-armed, .red-fan-moving');
+    if (document.hidden || (!inView && !dialog.open && !moving)) {
       player.pause();
       return;
     }
-    if (enabled() && loopWanted && player.paused && !deck.matches('.red-fan-armed, .red-fan-moving')) {
+    if (enabled() && loopWanted && player.paused && !moving) {
       playVideo();
     }
   }
@@ -837,8 +862,10 @@ function setupVideoPlayer(deck, videos, enabled) {
   function select(id) {
     const item = videos[id];
     if (dialog.open) dialog.close();
+    playAttempt++;
     player.pause();
     player.hidden = true;
+    showStatus();
     surface.hidden = !item.src;
     surface.classList.remove('is-started');
     player.loop = Boolean(item.loop);
@@ -855,7 +882,8 @@ function setupVideoPlayer(deck, videos, enabled) {
       }
       return;
     }
-    player.src = item.src;
+    const mobile = matchMedia('(max-width: 760px), (pointer: coarse)').matches;
+    player.src = mobile && item.mobileSrc ? item.mobileSrc : item.src;
     player.poster = item.poster ?? '';
     player.setAttribute('aria-label', item.title);
     dialogTitle.textContent = item.title;

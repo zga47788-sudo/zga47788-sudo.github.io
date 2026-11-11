@@ -16,7 +16,7 @@
   <link rel="stylesheet" href="motion.css" id="motion-styles">
   <link rel="stylesheet" href="static-review.css" id="static-review-styles" media="not all">
   <link rel="stylesheet" href="red-review.css?v=detail-images" id="red-review-styles" media="not all">
-  <link rel="stylesheet" href="red-motion.css" id="red-motion-styles" media="not all">
+  <link rel="stylesheet" href="red-motion.css?v=mobile-media" id="red-motion-styles" media="not all">
   <script>
     const version = new URLSearchParams(location.search).get('v') || 'red-motion';
     const redTheme = version === 'red-static' || version === 'red-motion';
@@ -31,14 +31,20 @@
       document.documentElement.dataset.redReview = '';
       document.getElementById('red-review-styles').media = 'all';
       document.querySelector('meta[name="theme-color"]').content = '#000000';
+      const portrait = document.createElement('link');
+      portrait.rel = 'preload';
+      portrait.as = 'image';
+      portrait.href = 'assets/red-review/hero-red-panel.webp';
+      portrait.setAttribute('fetchpriority', 'high');
+      document.head.append(portrait);
     }
     if (version === 'red-motion') {
       document.documentElement.dataset.redMotion = '';
       document.getElementById('red-motion-styles').media = 'all';
     }
   </script>
-  <script src="data.js" defer></script>
-  <script src="app.js?v=detail-images" defer></script>
+  <script src="data.js?v=mobile-media" defer></script>
+  <script src="app.js?v=mobile-media" defer></script>
   <script src="motion.js" defer></script>
 </head>
 <body>
@@ -120,7 +126,7 @@
               <svg viewBox="0 0 24 24"><rect x="1" y="4.5" width="22" height="15" rx="4" class="red-hero-youtube-base"/><path d="m10 8.8 6 3.2-6 3.2z"/></svg>
               <span>YouTube</span>
             </div>
-            <img class="red-hero-panel" src="assets/red-review/hero-red-panel.png" width="1024" height="1536" alt="" fetchpriority="high">
+            <img class="red-hero-panel" src="assets/red-review/hero-red-panel.webp" width="1024" height="1536" alt="" fetchpriority="high">
           </div>
           <figcaption class="red-hero-caption" lang="en">From visual concept to final cut</figcaption>
         </figure>

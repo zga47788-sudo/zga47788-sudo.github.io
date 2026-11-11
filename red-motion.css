@@ -49,6 +49,20 @@
 .red-fan-player[hidden],
 .red-fan-player video[hidden] { display: none; }
 
+.red-video-status {
+  position: absolute;
+  inset: 46% auto auto 50%;
+  max-width: calc(100% - 32px);
+  margin: 0;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transform: translate(-50%, -50%);
+  background: #160e15e6;
+  color: white;
+  font: 600 clamp(12px, 1.1vw, 16px)/1.4 var(--font-body);
+  text-align: center;
+}
+
 .red-fan-media img { object-fit: cover; }
 
 .red-fan-media::after {
