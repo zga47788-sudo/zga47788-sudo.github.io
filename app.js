@@ -78,7 +78,7 @@ document.querySelector('#timeline').innerHTML = [...careersByYear.keys()].sort()
           <div class="timeline-card">
             <h4>${item.company}</h4>
             <p class="timeline-role">${item.role}</p>
-            <p class="timeline-description">${item.description}</p>
+            ${[].concat(item.description).map(paragraph => `<p class="timeline-description">${paragraph}</p>`).join('')}
           </div>
         </li>
       `).join('')}

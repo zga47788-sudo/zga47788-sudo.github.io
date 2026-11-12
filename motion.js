@@ -34,7 +34,7 @@ for (const copy of document.querySelectorAll('.project-copy, .ability-copy')) {
   prepareReveal(copy, copy.children, 135);
 }
 for (const group of document.querySelectorAll(
-  '.career-intro, .timeline-group, .education, .career-links, .project-info-top'
+  '.timeline-group, .education, .career-links, .project-info-top'
 )) prepareReveal(group);
 revealObserver.observe(document.querySelector('.hero'));
 

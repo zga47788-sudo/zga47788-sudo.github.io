@@ -559,13 +559,6 @@ small {
   font-size: 22px;
 }
 
-.career-intro {
-  max-width: 680px;
-  color: var(--fg-2);
-  font-size: 17px;
-  line-height: 1.8;
-}
-
 .timeline {
   --axis-offset: 28px;
   --axis-gap: 24px;
@@ -573,7 +566,7 @@ small {
   position: relative;
   display: grid;
   gap: var(--space-6);
-  margin: var(--space-7) 0 0;
+  margin: 0;
   padding: 0 0 0 calc(var(--axis-offset) + var(--axis-gap));
   list-style: none;
 }
@@ -652,6 +645,10 @@ small {
   color: var(--fg-2);
   font-size: 15px;
   line-height: 1.75;
+}
+
+.timeline-description + .timeline-description {
+  margin-top: var(--space-3);
 }
 
 .education {
@@ -1527,10 +1524,6 @@ small {
     gap: 36px;
   }
 
-  .career-intro {
-    font-size: 16px;
-  }
-
   .profile-info {
     padding-inline: var(--space-2);
   }
@@ -1634,10 +1627,6 @@ small {
     width: 280px;
     max-width: 100%;
     margin-inline: auto;
-  }
-
-  .career-intro {
-    font-size: 16px;
   }
 
   .timeline {

@@ -320,11 +320,6 @@ export function setupCareerType(arrive, enabled, preference) {
     frame = requestAnimationFrame(tick);
   }
 
-  const intro = career.querySelector('.career-intro');
-  if (intro) {
-    const field = makeField(intro, 37);
-    arrive(intro, () => run(intro, [field]));
-  }
   [...career.querySelectorAll('.timeline-group')].forEach((group, index) => {
     const year = group.querySelector('.timeline-year');
     const to = Number(year.textContent);

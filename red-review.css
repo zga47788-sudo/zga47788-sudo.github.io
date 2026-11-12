@@ -877,7 +877,6 @@ main .chapter-english {
 }
 
 .timeline {
-  margin-top: clamp(24px, 4vw, 52px);
   padding: 0;
   gap: 0;
 }

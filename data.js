@@ -1,9 +1,19 @@
 // Content and stable media IDs stay separate from layout and interaction code.
 window.PORTFOLIO = {
   careers: [
-    { year: '2026', current: true, date: '2026.06 — 至今', company: '跨境美甲工作室', role: '联合创业实践', description: '为 TikTok Shop 东南亚穿戴甲项目制作商品视觉与短视频，围绕卖点进行脚本、分镜和场景表达，检查手部、商品结构与画面一致性。' },
-    { year: '2025', date: '2025.09 — 2026.04', company: '浙江领航', role: '电商设计师', description: '面向海外假发业务完成主图、详情与推广视觉，并探索 AI 图像及视频辅助制作。' },
-    { year: '2024', date: '2024.04 — 2025.07', company: '杭州全速（西安分部）', role: '创意设计师', description: '参与中国体育彩票、京东、泰国万客隆等商业视觉项目，完成 KV、海报与活动推广素材。' }
+    {
+      year: '2025', date: '2024.04 — 2025.07', company: '杭州全速（西安分部）', role: '创意设计师',
+      description: [
+        '负责快手线上活动的视觉制作，交付活动主视觉、直播间视觉、推广素材及互动玩法物料。参与中国体育彩票、京东及泰国万客隆的商业视觉项目，制作活动海报和线上推广物料。'
+      ]
+    },
+    {
+      year: '2026', date: '2025.09 — 2026.04', company: '浙江领航', role: '电商设计师 · 海外假发业务',
+      description: [
+        '负责海外假发商品的主图、详情页和推广素材，围绕款式、佩戴效果和使用场景组织商品信息。',
+        '参与假发佩戴图的批量制作，使用 ComfyUI、即梦等工具辅助生成，负责筛选和修整图像，检查佩戴是否自然、假发结构是否准确。使用自动套版流程，按商品系列匹配对应模板，批量输出主图，统一同系列的版式和信息位置。'
+      ]
+    }
   ],
   abilities: [
     { id: 'A-ABILITY-01', label: 'WORKFLOWS', title: 'AI 工具与工作流', description: '按任务选择并串联图像、视频与 Agent 工具，整理可复用的制作方法。' },
