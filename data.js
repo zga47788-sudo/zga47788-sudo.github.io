@@ -10,8 +10,9 @@ window.PORTFOLIO = {
     {
       year: '2026', date: '2025.09 — 2026.04', company: '浙江领航', role: '电商设计师 · 海外假发业务',
       description: [
-        '负责海外假发商品的主图、详情页和推广素材，围绕款式、佩戴效果和使用场景组织商品信息。',
-        '参与假发佩戴图的批量制作，使用 ComfyUI、即梦等工具辅助生成，负责筛选和修整图像，检查佩戴是否自然、假发结构是否准确。使用自动套版流程，按商品系列匹配对应模板，批量输出主图，统一同系列的版式和信息位置。'
+        '海外假发品牌（甲方）· 群店模式，单运营管辖 3–4 家店铺',
+        '自建 AI 批量生图工作流 → 人工筛选修整 → 脚本套版批量交付',
+        '日均约 40 张人物佩戴图，统一同系列版式与信息位置'
       ]
     }
   ],
@@ -21,6 +22,22 @@ window.PORTFOLIO = {
     { id: 'A-ABILITY-03', label: 'E-COMMERCE', title: '跨境电商视觉', description: '围绕商品卖点组织主图、详情、产品场景和短视频素材。' },
     { id: 'A-ABILITY-04', label: 'GRAPHIC DESIGN', title: '商业平面设计', description: '完成品牌 KV、运营海报与推广物料，兼顾创意、信息和视觉统一。' }
   ],
+  ecommerce: {
+    ability: { title: '电商商品内容', description: '围绕商品卖点组织主图、详情、产品场景和短视频素材，统一同系列版式与信息位置。' },
+    toolAbility: { id: 'A-ABILITY-05', label: 'LIGHTWEIGHT TOOLS', title: '轻量工具搭建', description: '用 Codex 搭建批量生图工具，从读取商品图到按原名归档，交给工具完成。' },
+    showcase: {
+      imageGroups: [
+        { title: '日常款', english: 'Everyday Collection', prefix: 'daily', images: [1, 2, 3, 4, 5, 6] },
+        { title: '圣诞节款', english: 'Christmas Collection', prefix: 'christmas', images: [1, 2, 3, 5, 6, 8] }
+      ],
+      clips: [
+        { title: '车内自拍视频', english: 'In-Car Selfie', file: 'car-selfie' },
+        { title: '银灰长卷发', english: 'Long Silver Waves', file: 'silver-waves' },
+        { title: '图生视频', english: 'Image to Video', file: 'image-to-video' }
+      ],
+      promo: { title: '自动套版', file: 'auto-layout' }
+    }
+  },
   posters: [
     { id: '05', src: 'assets/portfolio/poster-05.webp', alt: '7星彩紫蓝色中奖快报' },
     { id: '03', src: 'assets/portfolio/poster-03.webp', alt: '万客隆高露洁开业海报' },
@@ -114,6 +131,6 @@ window.PORTFOLIO = {
     'A-HERO-SCENE': { src: 'assets/hero-scene-v02.webp', ratio: '16:9', purpose: '手机、岩石、定向光静态概念场景' },
     'A-HERO-UI': { src: 'native-html', ratio: '360:780', purpose: '网页原生制作流程示意，四角透视映射到屏幕' },
     'A-PORTRAIT': { src: 'assets/portfolio/portrait-01.webp', ratio: '3:4', purpose: '赵世博证件照' },
-    'A-RESUME': { src: 'assets/zhao-shibo-resume.pdf', purpose: '用户提供的原始简历' }
+    'A-RESUME': { src: 'assets/zhao-shibo-resume.pdf', purpose: '作品集简历' }
   }
 };

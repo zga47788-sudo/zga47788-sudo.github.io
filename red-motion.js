@@ -1031,6 +1031,16 @@ function setupSections(play, enabled, preference, arrive, read) {
       if (coverType) mask(coverType, 420, 40, '30%');
     }, true);
   }
+  const promo = $('.ecommerce-promo');
+  const promoFrame = $('.ecommerce-promo-frame', promo);
+  arrive($('.ecommerce-carousel-stage'), () => {
+    rise($('.ecommerce-carousel-toolbar'), 12, 710, 280);
+  }, true);
+  arrive(promoFrame, () => {
+    mask(promoFrame, 810, 40, '30%');
+    revealType($('h3', promo), play, { delay: 140, duration: 710, stagger: 55 });
+    rise($('.ecommerce-promo-expand', promo), 12, 710, 750);
+  }, true);
   list.addEventListener('focusin', ({ target }) => {
     if (!target.matches('.project-open:focus-visible')) return;
     const card = target.closest('.project-case');

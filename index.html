@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#0a0b0d">
-  <meta name="description" content="赵世博的个人作品集：面向跨境电商的 AI 视频创作、自动化制作与商业视觉设计。">
+  <meta name="description" content="赵世博的个人作品集：跨境电商商品内容、AI 图像与视频制作，以及商业视觉设计。">
   <title>赵世博 SHIBO ZHAO — AI 视频与自动化制作</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
-  <link rel="preload" href="assets/fonts/noto-sans-sc-subset.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/noto-sans-sc-subset.woff2?v=product-showcase" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/barlow-condensed-extrabold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="styles.css?v=career-2026">
+  <link rel="stylesheet" href="styles.css?v=product-showcase">
   <link rel="stylesheet" href="hero.css">
   <link rel="stylesheet" href="chapter-headings.css">
   <link rel="stylesheet" href="hero-reference.css">
   <link rel="stylesheet" href="motion.css" id="motion-styles">
   <link rel="stylesheet" href="static-review.css" id="static-review-styles" media="not all">
-  <link rel="stylesheet" href="red-review.css?v=career-2026" id="red-review-styles" media="not all">
+  <link rel="stylesheet" href="red-review.css?v=full-width-carousel" id="red-review-styles" media="not all">
   <link rel="stylesheet" href="red-motion.css?v=mobile-media" id="red-motion-styles" media="not all">
   <script>
     const version = new URLSearchParams(location.search).get('v') || 'red-motion';
@@ -43,8 +43,8 @@
       document.getElementById('red-motion-styles').media = 'all';
     }
   </script>
-  <script src="data.js?v=career-2026" defer></script>
-  <script src="app.js?v=career-2026" defer></script>
+  <script src="data.js?v=product-showcase" defer></script>
+  <script src="app.js?v=full-width-carousel" defer></script>
   <script src="motion.js" defer></script>
 </head>
 <body>
@@ -55,6 +55,7 @@
       <span class="header-caption">SHIBO ZHAO <span>/ PORTFOLIO</span></span>
       <nav aria-label="主导航">
         <a href="#S02">作品</a>
+        <a href="#S02A" class="ecommerce-nav">商品</a>
         <a href="#S03">经历</a>
         <a href="#S03A">能力</a>
         <a href="#S04">视频</a>
@@ -132,7 +133,7 @@
         </figure>
         <div class="red-hero-identity">
           <h1 id="hero-title"><span lang="en">SHIBO ZHAO</span><span class="red-hero-name-zh">赵世博</span></h1>
-          <p>AI 视频创作与自动化</p>
+          <p>跨境电商商品内容 · AI 图像与视频制作</p>
         </div>
       </template>
       <template id="red-manifesto">
@@ -197,6 +198,52 @@
       </div>
     </section>
 
+    <template id="ecommerce-chapter">
+      <div class="chapter-divider editorial-divider container" aria-hidden="true"></div>
+      <section class="ecommerce section-space" id="S02A" aria-labelledby="ecommerce-title" data-section="S02A">
+        <div class="section-heading chapter-heading container">
+          <span class="chapter-number" aria-hidden="true">02</span>
+          <div class="chapter-title-group">
+            <h2 class="chapter-chinese" id="ecommerce-title">让视觉服务于卖点</h2>
+            <p class="chapter-english" lang="en">E-COMMERCE CONTENT</p>
+          </div>
+        </div>
+        <div class="ecommerce-carousel" data-ecommerce-carousel role="region" aria-roledescription="轮播" aria-label="假发商品图与视频">
+          <div class="ecommerce-carousel-stage" tabindex="0" aria-label="使用左右方向键切换，按回车查看当前作品">
+            <div class="ecommerce-carousel-track" aria-hidden="true"></div>
+            <span class="ecommerce-carousel-play ecommerce-carousel-current-play" aria-hidden="true" hidden>▶</span>
+          </div>
+          <div class="ecommerce-carousel-toolbar">
+            <button class="ecommerce-icon-button" type="button" data-carousel-step="-1" aria-label="上一项">‹</button>
+            <div class="ecommerce-carousel-caption" aria-live="polite" aria-atomic="true">
+              <span class="ecommerce-caption-title">日常款</span>
+              <span class="ecommerce-caption-english" lang="en">Everyday Collection</span>
+              <span class="ecommerce-caption-count">01 / 15</span>
+            </div>
+            <button class="ecommerce-icon-button" type="button" data-carousel-step="1" aria-label="下一项">›</button>
+          </div>
+        </div>
+        <div class="container">
+          <figure class="ecommerce-promo">
+            <div class="ecommerce-promo-frame">
+              <video class="ecommerce-promo-player" width="1920" height="1080" preload="none" controls controlslist="nofullscreen" playsinline disablepictureinpicture aria-label="自动套版产品宣传"></video>
+            </div>
+            <figcaption class="ecommerce-promo-meta">
+              <h3>自动套版</h3>
+              <button class="ecommerce-icon-button ecommerce-promo-expand" type="button" aria-label="放大自动套版视频" aria-haspopup="dialog">⛶</button>
+            </figcaption>
+          </figure>
+        </div>
+        <dialog class="ecommerce-media-dialog" aria-labelledby="ecommerce-media-title">
+          <div class="ecommerce-dialog-bar">
+            <h3 id="ecommerce-media-title"></h3>
+            <form method="dialog"><button class="ecommerce-icon-button" aria-label="关闭预览">×</button></form>
+          </div>
+          <div class="ecommerce-dialog-media"></div>
+        </dialog>
+      </section>
+    </template>
+
     <div class="chapter-divider editorial-divider container" aria-hidden="true">
       <strong>02</strong><span class="divider-title">职业经历</span><span class="divider-subtitle" lang="en">ABOUT / EXPERIENCE</span>
     </div>
@@ -215,7 +262,7 @@
         <div class="career-content">
           <ol class="timeline" id="timeline"></ol>
           <p class="education"><span>EDUCATION</span>陕西学前师范学院 / 本科 · 商业绘画 / 2020—2024</p>
-          <div class="career-links"><a class="button button-light" href="assets/zhao-shibo-resume.pdf" target="_blank" rel="noopener">查看个人简历 <span aria-hidden="true">↗</span></a></div>
+          <div class="career-links"><a class="button button-light" href="assets/zhao-shibo-resume.pdf?v=ecommerce" target="_blank" rel="noopener">查看个人简历 <span aria-hidden="true">↗</span></a></div>
         </div>
       </div>
     </section>

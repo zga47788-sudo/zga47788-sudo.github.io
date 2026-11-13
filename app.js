@@ -9,10 +9,30 @@ const reducedMotion = matchMedia(staticReview ? 'all' : '(prefers-reduced-motion
 let redMotionEffects;
 
 if (redReview) {
+  const ecommerceTemplate = document.querySelector('#ecommerce-chapter');
+  const career = document.querySelector('.career');
+  const abilities = document.querySelector('.abilities');
+  const selected = document.querySelector('.selected-work');
+  const selectedDivider = career.previousElementSibling;
+  const graphicDivider = document.querySelector('.graphic-projects').previousElementSibling;
+  selected.before(career, abilities.previousElementSibling, abilities, ecommerceTemplate.content);
+  graphicDivider.before(selectedDivider, selected);
+  ecommerceTemplate.remove();
+
+  const chapterHeadings = [
+    ['S03', '职业经历', 'Professional Experience'],
+    ['S03A', '我能做什么', 'What I Do'],
+    ['S02A'],
+    ['S04', '从参考成片', 'From Reference to Delivery'],
+    ['S02', '精选作品', 'Selected Works'],
+    ['S05', '平面项目', 'Design Projects']
+  ];
   const header = document.querySelector('.site-header');
   const hero = document.querySelector('#S01');
-  const links = [...header.querySelectorAll('nav a')];
+  const nav = header.querySelector('nav');
+  const links = chapterHeadings.map(([id]) => nav.querySelector(`a[href="#${id}"]`));
   const sections = links.map(link => document.querySelector(link.hash));
+  nav.append(...links);
   let currentLink;
   let pending = false;
 
@@ -41,14 +61,10 @@ if (redReview) {
   addEventListener('resize', scheduleNavigation);
   updateNavigation();
 
-  for (const [id, title, translation] of [
-    ['S02', '精选作品', 'Selected Works'],
-    ['S03', '职业经历', 'Professional Experience'],
-    ['S03A', '我能做什么', 'What I Do'],
-    ['S04', '从参考到成片', 'From Reference to Delivery'],
-    ['S05', '平面项目', 'Design Projects']
-  ]) {
+  for (const [index, [id, title, translation]] of chapterHeadings.entries()) {
     const heading = document.querySelector(`#${id} .chapter-heading`);
+    heading.querySelector('.chapter-number').textContent = pad(index + 1);
+    if (!title) continue;
     const chinese = heading.querySelector('.chapter-chinese');
     const english = heading.querySelector('.chapter-english');
     chinese.textContent = title;
@@ -61,6 +77,10 @@ if (redReview) {
   const toolkitTitle = document.querySelector('#toolkit-title');
   toolkitTitle.lang = 'en';
   toolkitTitle.innerHTML = '<span>TOOLS</span> I USE';
+
+  import('./ecommerce-showcase.js?v=full-width-carousel').then(({ initEcommerceShowcase }) => {
+    initEcommerceShowcase(data.ecommerce.showcase, reducedMotion);
+  }).catch(error => console.warn('Ecommerce showcase:', error));
 }
 
 const careersByYear = new Map();
@@ -177,7 +197,11 @@ function redAbilityArt(item) {
   return `<div class="ability-object ability-frame" data-ability-layer="work-sample">${abilityArtwork[item.id]}</div>`;
 }
 
-document.querySelector('#ability-grid').innerHTML = data.abilities.map(item => `
+const [workflowAbility, prototypeAbility, commerceAbility, designAbility] = data.abilities;
+const abilities = redReview
+  ? [workflowAbility, { ...commerceAbility, ...data.ecommerce.ability }, prototypeAbility, designAbility, data.ecommerce.toolAbility]
+  : data.abilities;
+document.querySelector('#ability-grid').innerHTML = abilities.map(item => `
   <article class="ability-card" data-asset="${item.id}">
     <div class="ability-copy">
       <p class="ability-kicker" lang="en">${item.label}</p>
@@ -185,7 +209,9 @@ document.querySelector('#ability-grid').innerHTML = data.abilities.map(item => `
       <p class="ability-description">${item.description}</p>
     </div>
     ${redReview
-      ? `<div class="ability-scene"${item.id === 'A-ABILITY-01' ? '' : ' aria-hidden="true"'}>${redAbilityArt(item)}</div>`
+      ? `<div class="ability-scene"${item.id === 'A-ABILITY-01' ? '' : ' aria-hidden="true"'}>${item.id === 'A-ABILITY-05'
+        ? '<p class="ability-tool-process">读取素材 <span>→</span> 批量生成 <span>→</span> 自动归档</p>'
+        : redAbilityArt(item)}</div>`
       : `<div class="ability-art" aria-hidden="true">${abilityArtwork[item.id]}</div>`}
   </article>
 `).join('');
@@ -523,7 +549,7 @@ if (heroScene) {
 }
 
 if (redMotion) {
-  import('./red-motion.js?v=mobile-media').then(module => {
+  import('./red-motion.js?v=full-width-carousel').then(module => {
     redMotionEffects = module.initRedMotion(reducedMotion, data.videos);
   }).catch(error => console.warn('Black/red motion preview:', error));
 }
